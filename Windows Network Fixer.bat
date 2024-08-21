@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.0.3
+echo Version: 1.0.4
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -80,6 +80,7 @@ echo.
 echo Reseting TCP/IP stack.
 echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-0050047759bc}\26 [1] > "%cd%\regini.txt"
 regini "%cd%\regini.txt" > nul 2>&1
+if not "%errorlevel%"=="0" goto "Error"
 del "%cd%\regini.txt" /f /q
 netsh int ip reset > nul 2>&1
 if "%regini%"=="True" goto "reginiDone"
