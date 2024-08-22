@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.0.5
+echo Version: 1.0.6
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -99,7 +99,7 @@ set regini=True
 echo.
 echo Please temporary rename to something else or temporary move to another location "%cd%\regini.txt" in order for this batch file to proceed. Press any key to continue when "%cd%\regini.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
 pause > nul 2>&1
-goto "3"
+goto "5"
 
 :"reginiDone"
 echo.
