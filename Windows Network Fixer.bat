@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.0.4
+echo Version: 1.0.5
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -32,8 +32,8 @@ echo.
 echo Network Repairs:
 echo [2] Release and renew IP address(es).
 echo [3] Flush DNS.
-echo [4] Reset TCP/IP stack.
-echo [5] Reset Winsock catalog.
+echo [4] Reset Winsock catalog.
+echo [5] Reset TCP/IP stack.
 echo.
 echo Firewall Repairs:
 echo [6] Set Windows Firewall rules to defualt.
@@ -74,6 +74,14 @@ echo DNS flushed.
 goto "Start"
 
 :"4"
+echo.
+echo Reseting Winsock catalog.
+netsh winsock reset > nul 2>&1
+if not "%errorlevel%"=="0" goto "Error"
+echo Winsock catalog reset.
+goto "Start"
+
+:"5"
 set regini=
 if exist "%cd%\regini.txt" goto "reginiExist"
 echo.
@@ -103,14 +111,6 @@ endlocal
 echo Restart needed to finish reseting TCP/IP stack. Press any key to restart this PC.
 pause > nul 2>&1
 shutdown /r /t 00
-goto "Start"
-
-:"5"
-echo.
-echo Reseting Winsock catalog.
-netsh winsock reset > nul 2>&1
-if not "%errorlevel%"=="0" goto "Error"
-echo Winsock catalog reset.
 goto "Start"
 
 :"6"
