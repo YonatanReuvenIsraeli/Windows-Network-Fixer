@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.0.14
+echo Version: 1.0.15
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -40,7 +40,6 @@ echo [6] Set Windows Firewall rules to defualt.
 echo.
 echo [7] Close
 set Repair=
-echo.
 echo.
 set /p Repair="What do you want to do? (1-7) "
 if /i "%Repair%"=="1" goto "1"
