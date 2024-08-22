@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.0.10
+echo Version: 1.0.11
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -91,7 +91,7 @@ echo.
 echo Reseting TCP/IP stack.
 echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-0050047759bc}\26 [1] > "%cd%\regini.txt"
 regini "%cd%\regini.txt" > nul 2>&1
-if not "%errorlevel%"=="0" goto "Error"
+if not "%errorlevel%"=="0" goto "reginiError"
 del "%cd%\regini.txt" /f /q
 netsh int ip reset > nul 2>&1.
 if /i "%regini%"=="True" goto "reginiDone"
@@ -103,6 +103,11 @@ echo.
 echo Please temporary rename to something else or temporary move to another location "%cd%\regini.txt" in order for this batch file to proceed. "%cd%\regini.txt" is not a system file. Press any key to continue when "%cd%\regini.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
 pause > nul 2>&1
 goto "5"
+
+:"reginiError"
+del "%cd%\regini.txt" /f /q
+echo There has been an error! You can try again.
+goto "Start"
 
 :"reginiDone"
 echo.
