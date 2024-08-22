@@ -90,8 +90,7 @@ echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-00500477
 regini "%cd%\regini.txt" > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 del "%cd%\regini.txt" /f /q
-netsh int ip reset > nul 2>&1
-echo Restart needed to finish reseting TCP/IP stack.
+netsh int ip reset > nul 2>&1.
 if "%regini%"=="True" goto "reginiDone"
 goto "Restart"
 
@@ -110,7 +109,7 @@ goto "Restart"
 :"Restart"
 echo.
 endlocal
-echo Press any key to restart this PC.
+echo Restart needed to finish reseting TCP/IP stack Press any key to restart this PC.
 pause > nul 2>&1
 shutdown /r /t 00
 
