@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.0.9
+echo Version: 1.0.10
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -45,7 +45,7 @@ if /i "%Repair%"=="1" goto "1"
 if /i "%Repair%"=="2" goto "2"
 if /i "%Repair%"=="3" goto "3"
 if /i "%Repair%"=="4" goto "4"
-if /i "%Repair%"=="5" goto "5"
+if /i "%Repair%"=="5" goto "regini"
 if /i "%Repair%"=="6" goto "6"
 echo Invalid syntax!
 goto "Start"
@@ -81,8 +81,11 @@ if not "%errorlevel%"=="0" goto "Error"
 echo Winsock catalog reset.
 goto "Start"
 
-:"5"
+:"regini"
 set regini=
+goto "5"
+
+:"5"
 if exist "%cd%\regini.txt" goto "reginiExist"
 echo.
 echo Reseting TCP/IP stack.
@@ -107,7 +110,6 @@ echo You can now rename or move back the file back to "%cd%\regini.txt"
 goto "Restart"
 
 :"Restart"
-if /i "%regini%"=="True" echo.
 endlocal
 echo Restart needed to finish reseting TCP/IP stack Press any key to restart this PC.
 pause > nul 2>&1
