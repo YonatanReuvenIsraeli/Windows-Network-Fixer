@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.1.0
+echo Version: 1.1.1
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -28,7 +28,7 @@ goto "Close"
 echo.
 echo Network View:
 echo [1] View current network status.
-echo [2] View current proxy status.
+echo [2] View current WinHTTP proxy status.
 echo.
 echo Network Repairs:
 echo [3] Release and renew IP address(es).
