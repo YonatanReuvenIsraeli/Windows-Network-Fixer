@@ -1,2 +1,2 @@
-# Windows Network Fixer v1.0.15
+# Windows Network Fixer v1.1.0
 Fixes Windows network issues.
