@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.0.15
+echo Version: 1.1.0
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -28,17 +28,19 @@ goto "Close"
 echo.
 echo Network View:
 echo [1] View current network status.
+echo [2] View current proxy status.
 echo.
 echo Network Repairs:
-echo [2] Release and renew IP address(es).
-echo [3] Flush DNS.
-echo [4] Reset Winsock catalog.
-echo [5] Reset TCP/IP stack.
+echo [3] Release and renew IP address(es).
+echo [4] Flush DNS.
+echo [5] Reset Winsock catalog.
+echo [6] Reset TCP/IP stack.
+echo [7] Set WinHTTP proxy to defualt.
 echo.
 echo Firewall Repairs:
-echo [6] Set Windows Firewall rules to defualt.
+echo [8] Set Windows Firewall rules to defualt.
 echo.
-echo [7] Close
+echo [9] Close
 set Repair=
 echo.
 set /p Repair="What do you want to do? (1-7) "
@@ -58,6 +60,11 @@ if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"2"
+netsh winhttp show proxy
+if not "%errorlevel%"=="0" goto "Error"
+goto "Start"
+
+:"3"
 echo.
 echo Releasing and renewing IP address(es).
 ipconfig /release > nul 2>&1
@@ -67,7 +74,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo IP address(es) released and renewed.
 goto "Start"
 
-:"3"
+:"4"
 echo.
 echo Flushing DNS.
 ipconfig /flushdns > nul 2>&1
@@ -75,7 +82,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo DNS flushed.
 goto "Start"
 
-:"4"
+:"5"
 echo.
 echo Reseting Winsock catalog.
 netsh winsock reset > nul 2>&1
@@ -85,9 +92,9 @@ goto "Start"
 
 :"regini"
 set regini=
-goto "5"
+goto "6"
 
-:"5"
+:"6"
 if exist "%cd%\regini.txt" goto "reginiExist"
 echo.
 echo Reseting TCP/IP stack.
@@ -122,7 +129,17 @@ echo Restart needed to finish reseting TCP/IP stack Press any key to restart thi
 pause > nul 2>&1
 shutdown /r /t 00
 
-:"6"
+:"7"
+echo.
+echo Reseting WinHTTP proxy.
+netsh winhttp autoproxy reset  > nul 2>&1
+if not "%errorlevel%"=="0" goto "Error"
+netsh winhttp proxy reset > nul 2>&1
+if not "%errorlevel%"=="0" goto "Error"
+echo WinHTTP proxy reset.
+goto "Start"
+
+:"8"
 echo.
 echo Reseting Windows Firewall to defualt.
 netsh advfirewall reset > nul 2>&1
