@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.2.0
+echo Version: 1.2.1
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -53,7 +53,7 @@ if /i "%Repair%"=="5" goto "5"
 if /i "%Repair%"=="6" goto "regini"
 if /i "%Repair%"=="7" goto "7"
 if /i "%Repair%"=="8" goto "8"
-if /i "%Repair%"=="9" goto "10"
+if /i "%Repair%"=="9" goto "9"
 if /i "%Repair%"=="10" goto "Close"
 echo Invalid syntax!
 goto "Start"
