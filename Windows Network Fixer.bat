@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.3.2
+echo Version: 1.3.3
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -38,7 +38,7 @@ echo [6] Flush DNS cache.
 echo [7] Reset Winsock catalog.
 echo [8] Reset TCP/IP stack.
 echo [9] Set WinHTTP proxy to default.
-echo [10] Reset ARP cache.
+echo [10] Clear ARP cache.
 echo [11] Reset Hosts file to defualt.
 echo.
 echo Firewall Repairs:
@@ -162,10 +162,10 @@ goto "Start"
 
 :"10"
 echo.
-echo Reseting APR cache.
+echo Clearing APR cache.
 arp /d
 if not "%errorlevel%"=="0" goto "Error"
-echo ARP cache reset.
+echo ARP cache cleared.
 goto "Start"
 
 :"11"
