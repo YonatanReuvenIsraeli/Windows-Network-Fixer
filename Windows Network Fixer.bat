@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.2.1
+echo Version: 1.3.0
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -28,23 +28,25 @@ goto "Close"
 echo.
 echo Network View:
 echo [1] View current network status.
-echo [2] View current WinHTTP proxy status.
+echo [2] View DNS cache.
+echo [3] View ARP cache.
+echo [4] View current WinHTTP proxy status.
 echo.
 echo Network Repairs:
-echo [3] Release and renew IP address(es).
-echo [4] Flush DNS.
-echo [5] Reset Winsock catalog.
-echo [6] Reset TCP/IP stack.
-echo [7] Set WinHTTP proxy to defualt.
-echo [8] Reset Hosts file.
-echo.
+echo [5] Release and renew IP address(es).
+echo [6] Flush DNS cache.
+echo [7] Reset Winsock catalog.
+echo [8] Reset TCP/IP stack.
+echo [9] Set WinHTTP proxy to defualt.
+echo [10] Reset ARP cache.
+echo [11] Reset Hosts file.
 echo Firewall Repairs:
-echo [9] Set Windows Firewall rules to defualt.
+echo [12] Set Windows Firewall rules to defualt.
 echo.
-echo [10] Close
+echo [13] Close
 set Repair=
 echo.
-set /p Repair="What do you want to do? (1-10) "
+set /p Repair="What do you want to do? (1-13) "
 if /i "%Repair%"=="1" goto "1"
 if /i "%Repair%"=="2" goto "2"
 if /i "%Repair%"=="3" goto "3"
@@ -54,7 +56,10 @@ if /i "%Repair%"=="6" goto "regini"
 if /i "%Repair%"=="7" goto "7"
 if /i "%Repair%"=="8" goto "8"
 if /i "%Repair%"=="9" goto "9"
-if /i "%Repair%"=="10" goto "Close"
+if /i "%Repair%"=="10" goto "10"
+if /i "%Repair%"=="11" goto "11"
+if /i "%Repair%"=="12" goto "12"
+if /i "%Repair%"=="13" goto "Close"
 echo Invalid syntax!
 goto "Start"
 
@@ -64,11 +69,22 @@ if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"2"
-netsh winhttp show proxy
+ipconfig /displaydns
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"3"
+arp /a
+if not "%errorlevel%"=="0" goto "Error"
+goto "Start"
+
+:"4"
+netsh winhttp show proxy
+if not "%errorlevel%"=="0" goto "Error"
+goto "Start"
+
+
+:"5"
 echo.
 echo Releasing and renewing IP address(es).
 ipconfig /release > nul 2>&1
@@ -78,7 +94,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo IP address(es) released and renewed.
 goto "Start"
 
-:"4"
+:"6"
 echo.
 echo Flushing DNS.
 ipconfig /flushdns > nul 2>&1
@@ -86,7 +102,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo DNS flushed.
 goto "Start"
 
-:"5"
+:"7"
 echo.
 echo Reseting Winsock catalog.
 netsh winsock reset > nul 2>&1
@@ -96,9 +112,9 @@ goto "Start"
 
 :"regini"
 set regini=
-goto "6"
+goto "8"
 
-:"6"
+:"8"
 if exist "%cd%\regini.txt" goto "reginiExist"
 echo.
 echo Reseting TCP/IP stack.
@@ -133,7 +149,7 @@ echo Restart needed to finish reseting TCP/IP stack Press any key to restart thi
 pause > nul 2>&1
 shutdown /r /t 00
 
-:"7"
+:"9"
 echo.
 echo Reseting WinHTTP proxy.
 netsh winhttp autoproxy reset  > nul 2>&1
@@ -143,7 +159,15 @@ if not "%errorlevel%"=="0" goto "Error"
 echo WinHTTP proxy reset.
 goto "Start"
 
-:"8"
+:"10"
+echo.
+echo Reseting APR cache.
+arp /d
+if not "%errorlevel%"=="0" goto "Error"
+echo ARP cache reset.
+goto "Start"
+
+:"11"
 echo.
 echo Reseting Host file.
 echo # Copyright (c) 1993-2009 Microsoft Corp.> "%windir%\System32\drivers\etc\hosts"
@@ -170,7 +194,7 @@ echo #	::1             localhost>> "%windir%\System32\drivers\etc\hosts"
 echo Host file reset.
 goto "Start"
 
-:"9"
+:"12"
 echo.
 echo Reseting Windows Firewall to defualt.
 netsh advfirewall reset > nul 2>&1
