@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.1.2
+echo Version: 1.2.0
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -36,14 +36,15 @@ echo [4] Flush DNS.
 echo [5] Reset Winsock catalog.
 echo [6] Reset TCP/IP stack.
 echo [7] Set WinHTTP proxy to defualt.
+echo [8] Reset Hosts file.
 echo.
 echo Firewall Repairs:
-echo [8] Set Windows Firewall rules to defualt.
+echo [9] Set Windows Firewall rules to defualt.
 echo.
-echo [9] Close
+echo [10] Close
 set Repair=
 echo.
-set /p Repair="What do you want to do? (1-7) "
+set /p Repair="What do you want to do? (1-10) "
 if /i "%Repair%"=="1" goto "1"
 if /i "%Repair%"=="2" goto "2"
 if /i "%Repair%"=="3" goto "3"
@@ -52,7 +53,8 @@ if /i "%Repair%"=="5" goto "5"
 if /i "%Repair%"=="6" goto "regini"
 if /i "%Repair%"=="7" goto "7"
 if /i "%Repair%"=="8" goto "8"
-if /i "%Repair%"=="9" goto "Close"
+if /i "%Repair%"=="9" goto "10"
+if /i "%Repair%"=="10" goto "Close"
 echo Invalid syntax!
 goto "Start"
 
@@ -142,6 +144,33 @@ echo WinHTTP proxy reset.
 goto "Start"
 
 :"8"
+echo.
+echo Reseting Host file.
+echo # Copyright (c) 1993-2009 Microsoft Corp.> "%windir%\System32\drivers\etc\hosts"
+echo # >> "%windir%\System32\drivers\etc\hosts"
+echo # This is a sample HOSTS file used by Microsoft TCP/IP for Windows.>> "%windir%\System32\drivers\etc\hosts"
+echo #>> "%windir%\System32\drivers\etc\hosts"
+echo # This file contains the mappings of IP addresses to host names. Each>> "%windir%\System32\drivers\etc\hosts"
+echo # entry should be kept on an individual line. The IP address should>> "%windir%\System32\drivers\etc\hosts"
+echo # be placed in the first column followed by the corresponding host name.>> "%windir%\System32\drivers\etc\hosts"
+echo # The IP address and the host name should be separated by at least one>> "%windir%\System32\drivers\etc\hosts"
+echo # space.>> "%windir%\System32\drivers\etc\hosts"
+echo #>> "%windir%\System32\drivers\etc\hosts"
+echo # Additionally, comments (such as these) may be inserted on individual>> "%windir%\System32\drivers\etc\hosts"
+echo # lines or following the machine name denoted by a '#' symbol.>> "%windir%\System32\drivers\etc\hosts"
+echo #>> "%windir%\System32\drivers\etc\hosts"
+echo # For example:>> "%windir%\System32\drivers\etc\hosts"
+echo #>> "%windir%\System32\drivers\etc\hosts"
+echo #      102.54.94.97     rhino.acme.com          # source server>> "%windir%\System32\drivers\etc\hosts"
+echo #       38.25.63.10     x.acme.com              # x client host>> "%windir%\System32\drivers\etc\hosts"
+echo.>> "%windir%\System32\drivers\etc\hosts"
+echo # localhost name resolution is handled within DNS itself.>> "%windir%\System32\drivers\etc\hosts"
+echo #	127.0.0.1       localhost>> "%windir%\System32\drivers\etc\hosts"
+echo #	::1             localhost>> "%windir%\System32\drivers\etc\hosts"
+echo Host file reset.
+goto "Start"
+
+:"9"
 echo.
 echo Reseting Windows Firewall to defualt.
 netsh advfirewall reset > nul 2>&1
