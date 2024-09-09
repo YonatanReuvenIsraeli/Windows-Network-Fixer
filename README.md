@@ -13,7 +13,7 @@ Flush DNS cache.
 Reset Winsock catalog.  
 Reset TCP/IP stack.  
 Set WinHTTP proxy to default.  
-Reset ARP cache.  
+Clear ARP cache.  
 Reset Hosts file to defualt.
 
 ## Firewall Repairs:  
