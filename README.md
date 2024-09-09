@@ -5,7 +5,7 @@ Fixes Windows network issues.
 View current network status.  
 View DNS cache.  
 View ARP cache.  
-View current WinHTTP proxy status.  
+View current WinHTTP proxy status.
 
 ## Network Repairs:  
 Release and renew IP address(es).  
@@ -14,7 +14,7 @@ Reset Winsock catalog.
 Reset TCP/IP stack.  
 Set WinHTTP proxy to default.  
 Reset ARP cache.  
-Reset Hosts file to defualt.  
+Reset Hosts file to defualt.
 
 ## Firewall Repairs:  
-Set Windows Firewall rules to defualt.  
+Set Windows Firewall rules to defualt.
