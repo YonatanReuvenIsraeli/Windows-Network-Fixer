@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.3.3
+echo Version: 1.3.4
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -34,7 +34,7 @@ echo [4] View current WinHTTP proxy status.
 echo.
 echo Network Repairs:
 echo [5] Release and renew IP address(es).
-echo [6] Flush DNS cache.
+echo [6] Clear DNS cache.
 echo [7] Reset Winsock catalog.
 echo [8] Reset TCP/IP stack.
 echo [9] Set WinHTTP proxy to default.
@@ -97,10 +97,10 @@ goto "Start"
 
 :"6"
 echo.
-echo Flushing DNS.
+echo Clear DNS cache.
 ipconfig /flushdns > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
-echo DNS flushed.
+echo DNS cache cleared.
 goto "Start"
 
 :"7"
