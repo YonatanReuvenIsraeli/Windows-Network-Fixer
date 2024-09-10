@@ -1,4 +1,4 @@
-# Windows Network Fixer v1.3.3
+# Windows Network Fixer v1.3.4
 Fixes Windows network issues.
 
 ## Network View:  
@@ -9,7 +9,7 @@ View current WinHTTP proxy status.
 
 ## Network Repairs:  
 Release and renew IP address(es).  
-Flush DNS cache.  
+Clear DNS cache.  
 Reset Winsock catalog.  
 Reset TCP/IP stack.  
 Set WinHTTP proxy to default.  
