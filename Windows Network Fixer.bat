@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.4.1
+echo Version: 1.4.2
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -154,7 +154,7 @@ goto "Restart"
 
 :"Restart"
 endlocal
-echo Restart needed to finish reseting TCP/IP stack Press any key to restart this PC.
+echo Restart needed to finish reseting TCP/IP stack. Press any key to restart this PC.
 pause > nul 2>&1
 shutdown /r /t 00
 
