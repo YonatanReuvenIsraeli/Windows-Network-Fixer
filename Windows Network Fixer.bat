@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.4.0
+echo Version: 1.4.1
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -171,7 +171,7 @@ goto "Start"
 :"11"
 echo.
 echo Clearing APR cache.
-netsh interface IP delete arpcache
+netsh interface IP delete arpcache > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo ARP cache cleared.
 goto "Start"
@@ -179,7 +179,7 @@ goto "Start"
 :"12"
 echo.
 echo Clearing routing table.
-route -f
+route -f > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo Routing table cleared.
 goto "Start"
