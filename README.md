@@ -16,7 +16,7 @@ Reset TCP/IP stack.
 Set WinHTTP proxy to default.  
 Clear ARP cache.  
 Clear routing table.  
-Reset Hosts file to defualt.
+Reset Hosts file to default.
 
 ## Firewall Repairs:  
 Set Windows Firewall rules to defualt.
