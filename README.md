@@ -1,8 +1,8 @@
-# Windows Network Fixer v1.4.3
+# Windows Network Fixer v1.4.4
 Fixes Windows network issues.
 
 ## Network View:  
-View current network status.  
+View current network configuration.  
 View DNS cache.  
 View ARP cache.  
 View routing table.  
