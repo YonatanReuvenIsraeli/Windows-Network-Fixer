@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.4.4
+echo Version: 1.4.5
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -38,10 +38,10 @@ echo [6] Release and renew IP address(es).
 echo [7] Clear DNS cache.
 echo [8] Reset Winsock catalog.
 echo [9] Reset TCP/IP stack.
-echo [10] Set WinHTTP proxy to default.
-echo [11] Clear ARP cache.
-echo [12] Clear routing table.
-echo [13] Reset Hosts file to default.
+echo [10] Clear ARP cache.
+echo [11] Clear routing table.
+echo [12] Reset Hosts file to default.
+echo [13] Set WinHTTP proxy to default.
 echo.
 echo Firewall Repairs:
 echo [14] Set Windows Firewall rules to defualt.
@@ -160,23 +160,13 @@ shutdown /r /t 00
 
 :"10"
 echo.
-echo Reseting WinHTTP proxy.
-netsh winhttp autoproxy reset  > nul 2>&1
-if not "%errorlevel%"=="0" goto "Error"
-netsh winhttp proxy reset > nul 2>&1
-if not "%errorlevel%"=="0" goto "Error"
-echo WinHTTP proxy reset.
-goto "Start"
-
-:"11"
-echo.
 echo Clearing APR cache.
 netsh interface IP delete arpcache > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo ARP cache cleared.
 goto "Start"
 
-:"12"
+:"11"
 echo.
 echo Clearing routing table.
 route -f > nul 2>&1
@@ -184,7 +174,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo Routing table cleared.
 goto "Start"
 
-:"13"
+:"12"
 echo.
 echo Reseting Host file.
 echo # Copyright (c) 1993-2009 Microsoft Corp. > "%windir%\System32\drivers\etc\hosts"
@@ -209,6 +199,16 @@ echo # localhost name resolution is handled within DNS itself.>> "%windir%\Syste
 echo #	127.0.0.1       localhost >> "%windir%\System32\drivers\etc\hosts"
 echo #	::1             localhost >> "%windir%\System32\drivers\etc\hosts"
 echo Host file reset.
+goto "Start"
+
+:"13"
+echo.
+echo Reseting WinHTTP proxy.
+netsh winhttp autoproxy reset  > nul 2>&1
+if not "%errorlevel%"=="0" goto "Error"
+netsh winhttp proxy reset > nul 2>&1
+if not "%errorlevel%"=="0" goto "Error"
+echo WinHTTP proxy reset.
 goto "Start"
 
 :"14"
