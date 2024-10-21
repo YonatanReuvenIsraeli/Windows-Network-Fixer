@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.4.3
+echo Version: 1.4.4
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -27,7 +27,7 @@ goto "Close"
 :"Start"
 echo.
 echo Network View:
-echo [1] View current network status.
+echo [1] View current network configuration.
 echo [2] View DNS cache.
 echo [3] View ARP cache.
 echo [4] View routing table.
