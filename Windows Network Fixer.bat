@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.4.5
+echo Version: 1.4.6
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -177,27 +177,27 @@ goto "Start"
 :"12"
 echo.
 echo Reseting Host file.
-echo # Copyright (c) 1993-2009 Microsoft Corp. > "%windir%\System32\drivers\etc\hosts"
-echo # >> "%windir%\System32\drivers\etc\hosts"
-echo # This is a sample HOSTS file used by Microsoft TCP/IP for Windows. >> "%windir%\System32\drivers\etc\hosts"
-echo # >> "%windir%\System32\drivers\etc\hosts"
-echo # This file contains the mappings of IP addresses to host names. Each >> "%windir%\System32\drivers\etc\hosts"
-echo # entry should be kept on an individual line. The IP address should >> "%windir%\System32\drivers\etc\hosts"
-echo # be placed in the first column followed by the corresponding host name. >> "%windir%\System32\drivers\etc\hosts"
-echo # The IP address and the host name should be separated by at least one >> "%windir%\System32\drivers\etc\hosts"
-echo # space. >> "%windir%\System32\drivers\etc\hosts"
-echo # >> "%windir%\System32\drivers\etc\hosts"
-echo # Additionally, comments (such as these) may be inserted on individual >> "%windir%\System32\drivers\etc\hosts"
-echo # lines or following the machine name denoted by a '#' symbol. >> "%windir%\System32\drivers\etc\hosts"
-echo # >> "%windir%\System32\drivers\etc\hosts"
-echo # For example: >> "%windir%\System32\drivers\etc\hosts"
-echo # >> "%windir%\System32\drivers\etc\hosts"
-echo #      102.54.94.97     rhino.acme.com          # source server >> "%windir%\System32\drivers\etc\hosts"
-echo #       38.25.63.10     x.acme.com              # x client host >> "%windir%\System32\drivers\etc\hosts"
-echo. >> "%windir%\System32\drivers\etc\hosts"
-echo # localhost name resolution is handled within DNS itself.>> "%windir%\System32\drivers\etc\hosts"
-echo #	127.0.0.1       localhost >> "%windir%\System32\drivers\etc\hosts"
-echo #	::1             localhost >> "%windir%\System32\drivers\etc\hosts"
+(echo # Copyright ^(c^) 1993-2009 Microsoft Corp.) > "%windir%\System32\drivers\etc\hosts"
+(echo #) >> "%windir%\System32\drivers\etc\hosts"
+(echo # This is a sample HOSTS file used by Microsoft TCP/IP for Windows.) >> "%windir%\System32\drivers\etc\hosts"
+(echo #) >> "%windir%\System32\drivers\etc\hosts"
+(echo # This file contains the mappings of IP addresses to host names. Each) >> "%windir%\System32\drivers\etc\hosts"
+(echo # entry should be kept on an individual line. The IP address should) >> "%windir%\System32\drivers\etc\hosts"
+(echo # be placed in the first column followed by the corresponding host name.) >> "%windir%\System32\drivers\etc\hosts"
+(echo # The IP address and the host name should be separated by at least one) >> "%windir%\System32\drivers\etc\hosts"
+(echo # space.) >> "%windir%\System32\drivers\etc\hosts"
+(echo #) >> "%windir%\System32\drivers\etc\hosts"
+(echo # Additionally, comments ^(such as these^) may be inserted on individual) >> "%windir%\System32\drivers\etc\hosts"
+(echo # lines or following the machine name denoted by a '#' symbol.) >> "%windir%\System32\drivers\etc\hosts"
+(echo #) >> "%windir%\System32\drivers\etc\hosts"
+(echo # For example:) >> "%windir%\System32\drivers\etc\hosts"
+(echo #) >> "%windir%\System32\drivers\etc\hosts"
+(echo #      102.54.94.97     rhino.acme.com          # source server) >> "%windir%\System32\drivers\etc\hosts"
+(echo #       38.25.63.10     x.acme.com              # x client host) >> "%windir%\System32\drivers\etc\hosts"
+(echo.) >> "%windir%\System32\drivers\etc\hosts"
+(echo # localhost name resolution is handled within DNS itself.) >> "%windir%\System32\drivers\etc\hosts"
+(echo #	127.0.0.1       localhost) >> "%windir%\System32\drivers\etc\hosts"
+(echo #	::1             localhost) >> "%windir%\System32\drivers\etc\hosts"
 echo Host file reset.
 goto "Start"
 
