@@ -1,4 +1,4 @@
-# Windows Network Fixer v1.4.6
+# Windows Network Fixer v1.5.0
 Fixes Windows network issues.
 
 ## Network View:  
@@ -6,6 +6,7 @@ View current network configuration.
 View DNS cache.  
 View ARP cache.  
 View routing table.  
+View Hosts file.  
 View current WinHTTP proxy status.
 
 ## Network Repairs:  
