@@ -6,7 +6,7 @@ View current network configuration.
 View DNS cache.  
 View ARP cache.  
 View routing table.  
-View Hosts file. 
+View Hosts file.  
 View Windows Defender Firewall with Advanced Security.  
 View current WinHTTP proxy status.
 
