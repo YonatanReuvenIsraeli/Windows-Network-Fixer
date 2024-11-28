@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.7.1
+echo Version: 1.7.2
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -235,7 +235,7 @@ echo.
 echo Reseting WinHTTP proxy.
 netsh winhttp reset autoproxy > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
-netsh winhttp proxy reset > nul 2>&1
+netsh winhttp reset proxy > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo WinHTTP proxy reset.
 goto "Start"
