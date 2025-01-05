@@ -2,14 +2,14 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.7.3
+echo Version: 1.7.4
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
-echo Sponsor: https://github.com/sponsors/YonatanReuvenIsraeli 
-net session > nul 2>&1
+echo Sponsor: https://github.com/sponsors/YonatanReuvenIsraeli
+"%windir%\System32\net.exe" session > nul 2>&1
 if not "%errorlevel%"=="0" goto "NotAdministrator"
-net user > nul 2>&1
+"%windir%\System32\net.exe" user > nul 2>&1
 if not "%errorlevel%"=="0" goto "InWindowsRecoveryEnvironment"
 goto "Start"
 
@@ -78,27 +78,27 @@ echo Invalid syntax!
 goto "Start"
 
 :"1"
-ipconfig /all
+"%windir%\System32\ipconfig.exe" /all
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"2"
-netsh int ip show dnsservers
+"%windir%\System32\netsh.exe" int ip show dnsservers
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"3"
-ipconfig /displaydns
+"%windir%\System32\ipconfig.exe" /displaydns
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"4"
-arp /a
+"%windir%\System32\ARP.EXE" /a
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"5"
-route print
+"%windir%\System32\ROUTE.EXE" print
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
@@ -114,21 +114,21 @@ if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"8"
-netsh int ip show destinationcache
+"%windir%\System32\netsh.exe" int ip show destinationcache
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"9"
-netsh winhttp show proxy
+"%windir%\System32\netsh.exe" winhttp show proxy
 if not "%errorlevel%"=="0" goto "Error"
 goto "Start"
 
 :"10"
 echo.
 echo Releasing and renewing IP address(es).
-ipconfig /release > nul 2>&1
+"%windir%\System32\ipconfig.exe" /release > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
-ipconfig /renew > nul 2>&1
+"%windir%\System32\ipconfig.exe" /renew > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo IP address(es) released and renewed.
 goto "Start"
@@ -136,7 +136,7 @@ goto "Start"
 :"11"
 echo.
 echo Clear DNS cache.
-ipconfig /flushdns > nul 2>&1
+"%windir%\System32\ipconfig.exe" /flushdns > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo DNS cache cleared.
 goto "Start"
@@ -144,7 +144,7 @@ goto "Start"
 :"12"
 echo.
 echo Reseting Winsock catalog.
-netsh winsock reset > nul 2>&1
+"%windir%\System32\netsh.exe" winsock reset > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo Winsock catalog reset.
 goto "Start"
@@ -158,10 +158,10 @@ if exist "%cd%\regini.txt" goto "reginiExist"
 echo.
 echo Reseting TCP/IP stack.
 echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-0050047759bc}\26 [1] > "%cd%\regini.txt"
-regini "%cd%\regini.txt" > nul 2>&1
+"%windir%\System32\regini.exe" "%cd%\regini.txt" > nul 2>&1
 if not "%errorlevel%"=="0" goto "reginiError"
 del "%cd%\regini.txt" /f /q
-netsh int ip reset > nul 2>&1
+"%windir%\System32\netsh.exe" int ip reset > nul 2>&1
 if /i "%regini%"=="True" goto "reginiDone"
 goto "Restart"
 
@@ -191,7 +191,7 @@ shutdown /r /t 00
 :"14"
 echo.
 echo Clearing APR cache.
-netsh interface IP delete arpcache > nul 2>&1
+"%windir%\System32\netsh.exe" interface IP delete arpcache > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo ARP cache cleared.
 goto "Start"
@@ -199,7 +199,7 @@ goto "Start"
 :"15"
 echo.
 echo Clearing routing table.
-route -f > nul 2>&1
+"%windir%\System32\ROUTE.EXE" -f > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo Routing table cleared.
 goto "Start"
@@ -236,7 +236,7 @@ echo.
 echo Reseting WinHTTP proxy.
 netsh winhttp reset autoproxy > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
-netsh winhttp reset proxy > nul 2>&1
+"%windir%\System32\netsh.exe" winhttp reset proxy > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo WinHTTP proxy reset.
 goto "Start"
@@ -244,7 +244,7 @@ goto "Start"
 :"18"
 echo.
 echo Reseting Windows Defender Firewall to default.
-netsh advfirewall reset > nul 2>&1
+"%windir%\System32\netsh.exe" advfirewall reset > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo Windows Defender Firewall reset to default.
 goto "Start"
