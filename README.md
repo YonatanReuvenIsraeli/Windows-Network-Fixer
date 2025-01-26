@@ -1,4 +1,4 @@
-# Windows Network Fixer v1.7.6
+# Windows Network Fixer v1.7.7
 Fixes Windows network issues.
 
 ## Network View:
