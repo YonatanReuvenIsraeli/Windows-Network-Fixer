@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.7.7
+echo Version: 1.7.8
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -143,7 +143,7 @@ goto "Start"
 
 :"12"
 echo.
-echo Reseting Winsock catalog.
+echo Resetting Winsock catalog.
 "%windir%\System32\netsh.exe" winsock reset > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo Winsock catalog reset.
@@ -156,7 +156,7 @@ goto "13"
 :"13"
 if exist "%cd%\regini.txt" goto "reginiExist"
 echo.
-echo Reseting TCP/IP stack.
+echo Resetting TCP/IP stack.
 echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-0050047759bc}\26 [1] > "%cd%\regini.txt"
 "%windir%\System32\regini.exe" "%cd%\regini.txt" > nul 2>&1
 if not "%errorlevel%"=="0" goto "reginiError"
@@ -190,7 +190,7 @@ shutdown /r /t 00
 
 :"14"
 echo.
-echo Clearing APR cache.
+echo Clearing ARP cache.
 "%windir%\System32\netsh.exe" interface IP delete arpcache > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo ARP cache cleared.
@@ -206,7 +206,7 @@ goto "Start"
 
 :"16"
 echo.
-echo Reseting Host file.
+echo Resetting Host file.
 (echo # Copyright ^(c^) 1993-2009 Microsoft Corp.) > "%windir%\System32\drivers\etc\hosts"
 (echo #) >> "%windir%\System32\drivers\etc\hosts"
 (echo # This is a sample HOSTS file used by Microsoft TCP/IP for Windows.) >> "%windir%\System32\drivers\etc\hosts"
@@ -233,7 +233,7 @@ goto "Start"
 
 :"17"
 echo.
-echo Reseting WinHTTP proxy.
+echo Resetting WinHTTP proxy.
 netsh winhttp reset autoproxy > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 "%windir%\System32\netsh.exe" winhttp reset proxy > nul 2>&1
@@ -243,7 +243,7 @@ goto "Start"
 
 :"18"
 echo.
-echo Reseting Windows Defender Firewall to default.
+echo Resetting Windows Defender Firewall to default.
 "%windir%\System32\netsh.exe" advfirewall reset > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo Windows Defender Firewall reset to default.
