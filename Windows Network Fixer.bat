@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.8.0
+echo Version: 1.8.1
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -27,7 +27,7 @@ goto "Close"
 
 :"Start"
 echo.
-echo Network View:
+echo Network view:
 echo [1] View current network configuration.
 echo [2] View DNS servers.
 echo [3] View DNS cache.
@@ -39,7 +39,7 @@ echo [8] View Windows Defender Firewall with Advanced Security.
 echo [9] View Destination Cache.
 echo [10] View current WinHTTP proxy status.
 echo.
-echo Network Repairs:
+echo Network repairs:
 echo [11] Release and renew IP address(es).
 echo [12] Clear DNS cache.
 echo [13] Reset Winsock catalog.
@@ -49,7 +49,7 @@ echo [16] Clear routing table.
 echo [17] Reset Hosts file to default.
 echo [18] Set WinHTTP proxy to default.
 echo.
-echo Firewall Repairs:
+echo Firewall repairs:
 echo [19] Set Windows Defender Firewall rules to default.
 echo.
 echo [20] Close
