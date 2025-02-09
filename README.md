@@ -1,7 +1,7 @@
-# Windows Network Fixer v1.8.0
+# Windows Network Fixer v1.8.1
 Fixes Windows network issues.
 
-## Network View:
+## Network view:
 View current network configuration.  
 View DNS servers.  
 View DNS cache.  
@@ -13,7 +13,7 @@ View Windows Defender Firewall with Advanced Security.
 View Destination Cache.  
 View current WinHTTP proxy status.
 
-## Network Repairs:
+## Network repairs:
 Release and renew IP address(es).  
 Clear DNS cache.  
 Reset Winsock catalog.  
@@ -23,5 +23,5 @@ Clear routing table.
 Reset Hosts file to default.  
 Set WinHTTP proxy to default.
 
-## Firewall Repairs:
+## Firewall repairs:
 Set Windows Defender Firewall rules to defualt.
