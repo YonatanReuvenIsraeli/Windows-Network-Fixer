@@ -1,10 +1,11 @@
-# Windows Network Fixer v1.7.8
+# Windows Network Fixer v1.8.0
 Fixes Windows network issues.
 
 ## Network View:
 View current network configuration.  
 View DNS servers.  
 View DNS cache.  
+View Winsock catalog.  
 View ARP cache.  
 View routing table.  
 View Hosts file.  
