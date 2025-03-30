@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.8.2
+echo Version: 1.8.3
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -153,9 +153,9 @@ echo Resetting Winsock catalog.
 "%windir%\System32\netsh.exe" winsock reset > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 endlocal
-echo Restart needed to finish reseting Winsock catalog. Press any key to restart this PC.
+echo Restart needed to finish reseting Winsock catalog. Please save everything you want before restarting this PC! Press any key to restart this PC.
 pause > nul 2>&1
-shutdown /r /t 00
+shutdown /r /t 0
 
 :"regini"
 set regini=
@@ -192,9 +192,9 @@ goto "Restart"
 
 :"Restart"
 endlocal
-echo Restart needed to finish reseting TCP/IP stack. Press any key to restart this PC.
+echo Restart needed to finish reseting TCP/IP stack. Please save everything you want before restarting this PC! Press any key to restart this PC.
 pause > nul 2>&1
-shutdown /r /t 00
+shutdown /r /t 0
 
 :"15"
 echo.
