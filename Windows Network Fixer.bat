@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.8.4
+echo Version: 1.8.5
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -165,10 +165,10 @@ goto "14"
 if exist "%cd%\regini.txt" goto "reginiExist"
 echo.
 echo Resetting TCP/IP stack.
-echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-0050047759bc}\26 [1] > "%cd%\regini.txt"
-"%windir%\System32\regini.exe" "%cd%\regini.txt" > nul 2>&1
+echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-0050047759bc}\26 [1] > "regini.txt"
+"%windir%\System32\regini.exe" "regini.txt" > nul 2>&1
 if not "%errorlevel%"=="0" goto "reginiError"
-del "%cd%\regini.txt" /f /q
+del "regini.txt" /f /q
 "%windir%\System32\netsh.exe" int ip reset > nul 2>&1
 if /i "%regini%"=="True" goto "reginiDone"
 goto "Restart"
@@ -176,18 +176,18 @@ goto "Restart"
 :"reginiExist"
 set regini=True
 echo.
-echo Please temporarily rename to something else or temporarily move to another location "regini.txt" in order for this batch file to proceed. "regini.txt" is located in the folder "%cd%". "regini.txt" is not a system file. Press any key to continue when "regini.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
+echo Please temporarily rename to something else or temporarily move to another location "regini.txt" in order for this batch file to proceed. "regini.txt" is not a system file. "regini.txt" is located in the folder "%cd%". Press any key to continue when "regini.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
 pause > nul 2>&1
 goto "14"
 
 :"reginiError"
-del "%cd%\regini.txt" /f /q
+del "regini.txt" /f /q
 echo There has been an error! You can try again.
 goto "Start"
 
 :"reginiDone"
 echo.
-echo You can now rename or move back the file back to "%cd%\regini.txt"
+echo You can now rename or move back the file back to "regini.txt"
 goto "Restart"
 
 :"Restart"
