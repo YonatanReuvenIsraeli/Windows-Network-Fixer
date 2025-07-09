@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.8.3
+echo Version: 1.8.4
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -141,7 +141,7 @@ goto "Start"
 
 :"12"
 echo.
-echo Clear DNS cache.
+echo Clearing DNS cache.
 "%windir%\System32\ipconfig.exe" /flushdns > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 echo DNS cache cleared.
