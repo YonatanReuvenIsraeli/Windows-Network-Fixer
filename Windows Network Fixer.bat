@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.8.5
+echo Version: 1.8.6
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -187,7 +187,7 @@ goto "Start"
 
 :"reginiDone"
 echo.
-echo You can now rename or move back the file back to "regini.txt"
+echo You can now rename or move the file back to "regini.txt"
 goto "Restart"
 
 :"Restart"
