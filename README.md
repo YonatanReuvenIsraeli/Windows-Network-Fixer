@@ -4,7 +4,7 @@ Fixes Windows network issues.
 > [!WARNING]
 > ## DUE TO MICROSOFT'S COPYRIGHT LIMITATIONS, THIS BATCH FILE NEED TO BE MODIFIED BEFORE IT CAN BE USED! YOU MUST FOLLOW MICROSOFT'S TERMS OF USE ON THEIR CODE!
 > ### Follow these steps in order.
-> **1.** Get the necessary modifications from here https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/deployment/windows-to-go/deploy-windows-to-go.  
+> **1.** Get the necessary modifications from here https://support.microsoft.com/en-us/topic/how-to-reset-the-hosts-file-back-to-the-default-c2a43f9d-e176-c6f3-e4ef-3500277a6dae.  
 > **2.** Scroll to the first "san_policy.xml" file and copy it line by line into lines 804-841 but skip lines 829-839. Put the code in between the `(echo ` and `)`. Remember to include all spaces!  
 > **3.** In lines 829-839 copy what you have put in for 818-828 but on line 834 change `amd64` to `arm64`.  
 > **4.** Put a `^` before every `<` and `>` that is in the code you put in. There is a total of 34 `^` that needs to be put in. Ignore any `<` and `>` that are in the batch file but was not copied by you even if it is in the same line as the code that you put in.
