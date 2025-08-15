@@ -5,9 +5,8 @@ Fixes Windows network issues.
 > ## DUE TO MICROSOFT'S COPYRIGHT LIMITATIONS, THIS BATCH FILE NEED TO BE MODIFIED BEFORE IT CAN BE USED! YOU MUST FOLLOW MICROSOFT'S TERMS OF USE ON THEIR CODE!
 > ### Follow these steps in order.
 > **1.** Get the necessary modifications from a unmodified `"%windir%\System32\drivers\etc\hosts"`.  
-> **2.** Copy the file line by line into lines 218-238 but for the blank line on line 235 put a `.`. Put the code in between the `(echo ` and `)`.  
-> **3.** In lines 829-839 copy what you have put in for 818-828 but on line 834 change `amd64` to `arm64`.  
-> **4.** Put a `^` before every `(` and `)` that is in the code you put in. There is a total of 4 `^` that needs to be put in. Ignore any `(` and `)` that are in the batch file but was not copied by you even if it is in the same line as the code that you put in.
+> **2.** Copy the file line by line into lines 218-238 but for the blank line on line 235 put a `.`. Put the code in between the `(echo ` and `)`.   
+> **3.** Put a `^` before every `(` and `)` that is in the code you put in. There is a total of 4 `^` that needs to be put in. Ignore any `(` and `)` that are in the batch file but was not copied by you even if it is in the same line as the code that you put in.
 
 ## Network View
 - View current network configuration.  
