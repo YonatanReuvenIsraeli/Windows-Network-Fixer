@@ -2,7 +2,7 @@
 Fixes Windows network issues.
 
 > [!WARNING]
-> ## DUE TO MICROSOFT'S COPYRIGHT LIMITATIONS, THIS BATCH FILE NEED TO BE MODIFIED BEFORE IT CAN BE USED! YOU MUST FOLLOW MICROSOFT'S TERMS OF USE ON THEIR CODE!
+> ## DUE TO MICROSOFT'S COPYRIGHT LIMITATIONS, THIS BATCH FILE NEED TO BE MODIFIED BEFORE IT CAN BE USED! YOU MUST FOLLOW MICROSOFT'S TERMS OF USE!
 > ### Follow these steps in order.
 > **1.** Get the necessary modifications from a unmodified `"%windir%\System32\drivers\etc\hosts"` file that is from the same major Windows version as the PC you are tying to fix.  
 > **2.** Copy the file line by line into lines 218-238. Skip both the blank line in the `"%windir%\System32\drivers\etc\hosts"` file and line 235. Put the code in between the `(echo ` and `)`.  
