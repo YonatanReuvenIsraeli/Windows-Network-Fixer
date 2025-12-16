@@ -1,4 +1,4 @@
-# Windows Network Fixer v1.8.6
+# Windows Network Fixer v1.8.7
 Fixes Windows network issues.
 
 > [!WARNING]
