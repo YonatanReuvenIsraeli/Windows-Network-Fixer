@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.8.6
+echo Version: 1.8.7
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -214,7 +214,7 @@ goto "Start"
 
 :"17"
 echo.
-echo Resetting Host file.
+echo Resetting Hosts file.
 (echo ) > "%windir%\System32\drivers\etc\hosts"
 (echo ) >> "%windir%\System32\drivers\etc\hosts"
 (echo ) >> "%windir%\System32\drivers\etc\hosts"
@@ -236,7 +236,7 @@ echo Resetting Host file.
 (echo ) >> "%windir%\System32\drivers\etc\hosts"
 (echo ) >> "%windir%\System32\drivers\etc\hosts"
 (echo ) >> "%windir%\System32\drivers\etc\hosts"
-echo Host file reset.
+echo Hosts file reset.
 goto "Start"
 
 :"18"
