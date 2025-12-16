@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.8.7
+echo Version: 1.9.0
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -43,16 +43,18 @@ echo Network repairs:
 echo [11] Release and renew IP address(es).
 echo [12] Clear DNS cache.
 echo [13] Reset Winsock catalog.
-echo [14] Reset TCP/IP stack.
-echo [15] Clear ARP cache.
-echo [16] Clear routing table.
-echo [17] Reset Hosts file to default.
-echo [18] Set WinHTTP proxy to default.
+echo [14] Reset IPv4 TCP/IP stack.
+echo [15] Reset IPv6 TCP/IP stack.
+echo [16] Reset both IPv4 and IPv4 TCP/IP stack.
+echo [17] Clear ARP cache.
+echo [18] Clear routing table.
+echo [19] Reset Hosts file to default.
+echo [20] Set WinHTTP proxy to default.
 echo.
 echo Firewall repairs:
-echo [19] Set Windows Defender Firewall rules to default.
+echo [21] Set Windows Defender Firewall rules to default.
 echo.
-echo [20] Close
+echo [22] Close
 echo.
 set Repair=
 set /p Repair="What do you want to do? (1-20) "
@@ -69,13 +71,15 @@ if /i "%Repair%"=="10" goto "10"
 if /i "%Repair%"=="11" goto "11"
 if /i "%Repair%"=="12" goto "12"
 if /i "%Repair%"=="13" goto "13"
-if /i "%Repair%"=="14" goto "regini"
+if /i "%Repair%"=="14" goto "14"
 if /i "%Repair%"=="15" goto "15"
-if /i "%Repair%"=="16" goto "16"
-if /i "%Repair%"=="17" goto "17"
-if /i "%Repair%"=="18" goto "18"
-if /i "%Repair%"=="19" goto "19"
-if /i "%Repair%"=="20" goto "Close"
+if /i "%Repair%"=="15" goto "16"
+if /i "%Repair%"=="15" goto "17"
+if /i "%Repair%"=="16" goto "18"
+if /i "%Repair%"=="17" goto "19"
+if /i "%Repair%"=="18" goto "20"
+if /i "%Repair%"=="19" goto "21"
+if /i "%Repair%"=="22" goto "Close"
 echo Invalid syntax!
 goto "Start"
 
@@ -157,46 +161,30 @@ echo Restart needed to finish reseting Winsock catalog. Please save everything y
 pause > nul 2>&1
 shutdown /r /t 0
 
-:"regini"
-set regini=
-goto "14"
-
 :"14"
-if exist "%cd%\regini.txt" goto "reginiExist"
-echo.
-echo Resetting TCP/IP stack.
-echo HKLM\SYSTEM\CurrentControlSet\Control\Nsi\{eb004a00-9b1a-11d4-9123-0050047759bc}\26 [1] > "regini.txt"
-"%windir%\System32\regini.exe" "regini.txt" > nul 2>&1
-if not "%errorlevel%"=="0" goto "reginiError"
-del "regini.txt" /f /q
 "%windir%\System32\netsh.exe" int ip reset > nul 2>&1
-if /i "%regini%"=="True" goto "reginiDone"
-goto "Restart"
-
-:"reginiExist"
-set regini=True
-echo.
-echo Please temporarily rename to something else or temporarily move to another location "regini.txt" in order for this batch file to proceed. "regini.txt" is not a system file. "regini.txt" is located in the folder "%cd%". Press any key to continue when "regini.txt" is renamed to something else or moved to another location. This batch file will let you know when you can rename it back to its original name or move it back to its original location.
-pause > nul 2>&1
-goto "14"
-
-:"reginiError"
-del "regini.txt" /f /q
-echo There has been an error! You can try again.
-goto "Start"
-
-:"reginiDone"
-echo.
-echo You can now rename or move the file back to "regini.txt"
-goto "Restart"
-
-:"Restart"
 endlocal
-echo Restart needed to finish reseting TCP/IP stack. Please save everything you want before restarting this PC! Press any key to restart this PC.
+echo Restart needed to finish reseting IPv4 TCP/IP stack. Please save everything you want before restarting this PC! Press any key to restart this PC.
 pause > nul 2>&1
 shutdown /r /t 0
 
+
 :"15"
+"%windir%\System32\netsh.exe" int ipv6 reset > nul 2>&1
+endlocal
+echo Restart needed to finish reseting IPv6 TCP/IP stack. Please save everything you want before restarting this PC! Press any key to restart this PC.
+pause > nul 2>&1
+shutdown /r /t 0
+
+:"16"
+"%windir%\System32\netsh.exe" int ip reset > nul 2>&1
+"%windir%\System32\netsh.exe" int ipv6 reset > nul 2>&1
+endlocal
+echo Restart needed to finish reseting IPv4 and IPv6 TCP/IP stack. Please save everything you want before restarting this PC! Press any key to restart this PC.
+pause > nul 2>&1
+shutdown /r /t 0
+
+:"17"
 echo.
 echo Clearing ARP cache.
 "%windir%\System32\netsh.exe" interface IP delete arpcache > nul 2>&1
@@ -204,7 +192,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo ARP cache cleared.
 goto "Start"
 
-:"16"
+:"18"
 echo.
 echo Clearing routing table.
 "%windir%\System32\ROUTE.EXE" -f > nul 2>&1
@@ -212,7 +200,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo Routing table cleared.
 goto "Start"
 
-:"17"
+:"19"
 echo.
 echo Resetting Hosts file.
 (echo ) > "%windir%\System32\drivers\etc\hosts"
@@ -239,7 +227,7 @@ echo Resetting Hosts file.
 echo Hosts file reset.
 goto "Start"
 
-:"18"
+:"20"
 echo.
 echo Resetting WinHTTP proxy.
 netsh winhttp reset autoproxy > nul 2>&1
@@ -249,7 +237,7 @@ if not "%errorlevel%"=="0" goto "Error"
 echo WinHTTP proxy reset.
 goto "Start"
 
-:"19"
+:"21"
 echo.
 echo Resetting Windows Defender Firewall to default.
 "%windir%\System32\netsh.exe" advfirewall reset > nul 2>&1
