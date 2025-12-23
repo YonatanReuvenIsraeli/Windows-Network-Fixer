@@ -2,7 +2,7 @@
 title Windows Network Fixer
 setlocal
 echo Program Name: Windows Network Fixer
-echo Version: 1.9.0
+echo Version: 1.9.1
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -57,7 +57,7 @@ echo.
 echo [22] Close
 echo.
 set Repair=
-set /p Repair="What do you want to do? (1-20) "
+set /p Repair="What do you want to do? (1-22) "
 if /i "%Repair%"=="1" goto "1"
 if /i "%Repair%"=="2" goto "2"
 if /i "%Repair%"=="3" goto "3"
@@ -73,12 +73,12 @@ if /i "%Repair%"=="12" goto "12"
 if /i "%Repair%"=="13" goto "13"
 if /i "%Repair%"=="14" goto "14"
 if /i "%Repair%"=="15" goto "15"
-if /i "%Repair%"=="15" goto "16"
-if /i "%Repair%"=="15" goto "17"
-if /i "%Repair%"=="16" goto "18"
-if /i "%Repair%"=="17" goto "19"
-if /i "%Repair%"=="18" goto "20"
-if /i "%Repair%"=="19" goto "21"
+if /i "%Repair%"=="16" goto "16"
+if /i "%Repair%"=="17" goto "17"
+if /i "%Repair%"=="18" goto "18"
+if /i "%Repair%"=="19" goto "19"
+if /i "%Repair%"=="20" goto "20"
+if /i "%Repair%"=="21" goto "21"
 if /i "%Repair%"=="22" goto "Close"
 echo Invalid syntax!
 goto "Start"
