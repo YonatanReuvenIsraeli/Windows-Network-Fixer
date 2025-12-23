@@ -1,4 +1,4 @@
-# Windows Network Fixer v1.9.1
+# Windows Network Fixer v1.9.2
 Fixes Windows network issues.
 
 > [!WARNING]
@@ -21,7 +21,7 @@ Fixes Windows network issues.
 - View Destination Cache.  
 - View current WinHTTP proxy status.
 
-## Network Repairs
+## Network Repair
 - Release and renew IP address(es).  
 - Clear DNS cache.  
 - Reset Winsock catalog.  
@@ -33,5 +33,5 @@ Fixes Windows network issues.
 - Reset Hosts file to default.  
 - Set WinHTTP proxy to default.
 
-## Firewall Repairs
+## Firewall Repair
 - Set Windows Defender Firewall rules to defualt.
