@@ -45,7 +45,7 @@ echo [12] Clear DNS cache.
 echo [13] Reset Winsock catalog.
 echo [14] Reset IPv4 TCP/IP stack.
 echo [15] Reset IPv6 TCP/IP stack.
-echo [16] Reset both IPv4 and IPv4 TCP/IP stack.
+echo [16] Reset both IPv4 and IPv6 TCP/IP stack.
 echo [17] Clear ARP cache.
 echo [18] Clear routing table.
 echo [19] Reset Hosts file to default.
