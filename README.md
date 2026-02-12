@@ -1,4 +1,4 @@
-# Windows Network Fixer v1.9.3
+# Windows Network Fixer v1.9.4
 Fixes Windows network issues.
 
 > [!WARNING]
